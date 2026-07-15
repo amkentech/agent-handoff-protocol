@@ -103,7 +103,40 @@ whether a human approved it.
 
 ## Bindings
 
-This skill is tool-agnostic. Bind it to a concrete stack by filling in
-`templates/bindings.md` (which store is the work tree, which channel gets
-notifications, who the escalation contacts are). A worked example for
-Confluence + Teams/Slack lives in `examples/confluence-setup.md`.
+This skill is tool-agnostic. It binds to a concrete stack through a filled-in
+`bindings.md` (which store is the work tree, which channel gets notifications,
+who the escalation contacts are). A worked example for Confluence +
+Teams/Slack lives in `examples/confluence-setup.md`.
+
+## First-run setup — interview, don't assume
+
+If no completed bindings file exists (or any binding below is missing), do NOT
+proceed with work. Run setup instead: interview the user with the questions
+below, ONE at a time, adapting follow-ups to their answers. Then write the
+completed bindings file to the agreed location and read it back to the user
+for confirmation.
+
+1. **Work store** — "Where should work items and artifacts live: Confluence,
+   SharePoint, GitHub, or something else?" Check the answer against
+   `protocol/store-contract.md` (container, status, version, mention, audit).
+   If a capability is missing, say which one and how to cover it — never
+   silently accept a store that can't hold the protocol.
+2. **Location** — the specific space / site / repo, and the feature-tree
+   convention (parent = feature, children = artifacts).
+3. **Status mechanism** — how states will be rendered in that store (lozenge,
+   metadata column, label, front-matter field).
+4. **Version pin convention** — how "Approved for build: vN" will be recorded
+   (page version, file version, commit SHA).
+5. **Notification channel** — Teams or Slack, and which channel. Confirm the
+   rule: action-needed messages only.
+6. **Roles** — which human and agent roles are in play, and who owns each.
+7. **Escalation contacts** — per role: who gets the ask-human questions.
+8. **Access model** — who/what can read and write where. Confirm the rule:
+   handoffs move context, never privilege.
+9. **Bindings home** — where the completed bindings file itself lives (it is
+   an artifact too: one authoritative copy, one named owner, changes announced
+   like any approved-artifact change).
+
+Setup is complete only when every question has an answer and the user has
+confirmed the written bindings. Re-run setup whenever a binding is found to be
+stale or contradicted by the actual stack — degrade loud, never guess.

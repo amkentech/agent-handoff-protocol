@@ -1,0 +1,34 @@
+{
+  "name": "agent-handoff-protocol",
+  "version": "0.1.0",
+  "description": "Coordination protocol for human-AI-agent teams working across different tools. Installs the orchestrated-handoff skill into Claude Code, GitHub Copilot, and Cursor.",
+  "keywords": [
+    "ai",
+    "agents",
+    "coordination",
+    "handoff",
+    "orchestration",
+    "protocol",
+    "claude-code",
+    "copilot",
+    "cursor",
+    "bmad"
+  ],
+  "license": "MIT",
+  "author": "Johnathan Aaron",
+  "bin": {
+    "agent-handoff-protocol": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "protocol/",
+    "templates/",
+    "examples/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

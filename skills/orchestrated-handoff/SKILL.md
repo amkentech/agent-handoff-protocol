@@ -104,9 +104,11 @@ whether a human approved it.
 ## Bindings
 
 This skill is tool-agnostic. It binds to a concrete stack through a filled-in
-`bindings.md` (which store is the work tree, which channel gets notifications,
-who the escalation contacts are). A worked example for Confluence +
-Teams/Slack lives in `examples/confluence-setup.md`.
+bindings file — default location `.handoff/bindings.md` in the project (the
+installer scaffolds it); teams may agree a different authoritative home in the
+setup interview. Bindings cover which store is the work tree, which channel
+gets notifications, and who the escalation contacts are. A worked example for
+Confluence + Teams/Slack lives in `examples/confluence-setup.md`.
 
 ## First-run setup — interview, don't assume
 

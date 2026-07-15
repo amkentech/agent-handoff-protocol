@@ -53,13 +53,34 @@ you use. It is a set of rules any agent can follow, in any stack:
 
 ## Getting started
 
-1. Copy `skills/orchestrated-handoff/` into your agents' skill/instructions
-   location.
-2. Fill in `templates/bindings.md` for your stack and give it to every agent.
-3. Set up your work store following `examples/confluence-setup.md` (or adapt
-   it to your wiki/repo).
-4. Run one real feature through it: create the work item, let the first agent
-   gate-check, work, hand off, and watch the notification land.
+```
+npx agent-handoff-protocol
+```
+
+Run it in your project. The installer detects which agent tools you use and
+installs the skill in each one's native location:
+
+- Claude Code → `.claude/skills/orchestrated-handoff/SKILL.md`
+- GitHub Copilot → `.github/instructions/orchestrated-handoff.instructions.md`
+- Cursor → `.cursor/rules/orchestrated-handoff.mdc`
+- No tool detected → `.handoff/skill/SKILL.md` (point any agent at it)
+
+It also scaffolds `.handoff/` with the protocol reference and a bindings
+template. Re-running refreshes the skill but never overwrites your filled-in
+bindings.
+
+Then open your agent and say **"Run the orchestrated-handoff setup
+interview."** The agent interviews your team (work store, notification
+channel, roles, escalation contacts), validates the store against the
+capability contract, and writes the completed agreement to
+`.handoff/bindings.md`. The skill refuses to run work items until bindings
+are complete.
+
+Finally, run one real feature through it: create the work item, let the first
+agent gate-check, work, hand off, and watch the notification land.
+
+Manual alternative: copy `skills/orchestrated-handoff/` into your agents'
+instructions location and fill in `templates/bindings.md` yourself.
 
 ## Works with
 

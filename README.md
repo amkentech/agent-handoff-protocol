@@ -27,6 +27,7 @@ you use. It is a set of rules any agent can follow, in any stack:
 |---|---|
 | `skills/orchestrated-handoff/SKILL.md` | The protocol as an agent skill (Claude Code skill format; usable as instructions for any agent) |
 | `protocol/states.md` | The shared state model and legal transitions |
+| `protocol/store-contract.md` | The 5 capabilities any work store must provide — with Confluence, SharePoint, and GitHub mappings |
 | `protocol/work-item.schema.json` | Work item — the protocol's primary object |
 | `protocol/handoff.schema.json` | The handoff package — the system of record for transfers |
 | `templates/work-item-prompt.md` | Paste-ready prompt to run one work item under the protocol |

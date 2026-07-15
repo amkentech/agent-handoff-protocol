@@ -5,7 +5,7 @@ fill it in, and give it to every agent alongside the skill.
 
 | Binding | Value | Notes |
 |---|---|---|
-| **Work store** | {{e.g. Confluence space X / repo folder /work}} | Where work items + artifacts live. One authority — if you mirror state, name which side wins. |
+| **Work store** | {{e.g. Confluence space X / SharePoint library / repo folder /work}} | Any store meeting `protocol/store-contract.md`. One authority per artifact — if you mirror state, name which side wins. |
 | **Feature tree convention** | {{e.g. Feature page = parent; persona artifacts = children}} | |
 | **Status mechanism** | {{e.g. Confluence status lozenge / page property / JSON field}} | Must render the states in protocol/states.md. |
 | **Version pin convention** | {{e.g. "Approved for build: v7" line in a Handoff block at top of page}} | |

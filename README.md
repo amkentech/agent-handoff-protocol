@@ -106,6 +106,12 @@ Extensions land fast (new store mappings, new tool install targets, worked
 examples); core protocol changes need an issue with a concrete failing case
 first. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Auditing the claims
+
+Every claim this repo makes — what kind of claim it is and how to verify it
+yourself — is walked through in [AUDIT.md](AUDIT.md). If what you find
+doesn't match what it says, that's an issue we want opened.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

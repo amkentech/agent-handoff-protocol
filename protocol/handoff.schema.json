@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/PLACEHOLDER/agent-handoff-protocol/protocol/handoff.schema.json",
+  "$id": "https://github.com/amkentech/agent-handoff-protocol/protocol/handoff.schema.json",
   "title": "Handoff Package",
   "description": "The structured package one human or agent produces when transferring responsibility for a work item to another. Free-form chat may accompany it; this package is the system of record.",
   "type": "object",

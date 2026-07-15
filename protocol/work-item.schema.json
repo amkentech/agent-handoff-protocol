@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/PLACEHOLDER/agent-handoff-protocol/protocol/work-item.schema.json",
+  "$id": "https://github.com/amkentech/agent-handoff-protocol/protocol/work-item.schema.json",
   "title": "Work Item",
   "description": "The primary object of the protocol. Messages, artifacts, decisions, approvals, and agent activity attach to the work item — not the other way around.",
   "type": "object",

@@ -6,10 +6,10 @@
  *
  * BMAD-style setup: detects which agent tools the target project uses,
  * installs the orchestrated-handoff skill into each tool's native location,
- * and scaffolds a .handoff/ folder (protocol docs + bindings template).
+ * and scaffolds a .orchestrated/ folder (protocol docs + bindings template).
  *
- * The installer is the mechanical half of setup. The judgment half — the
- * bindings interview (store, channel, roles, escalation) — is run BY YOUR
+ * The installer is the mechanical half of setup. The judgment half -- the
+ * bindings interview (store, channel, roles, escalation) -- is run BY YOUR
  * AGENT afterward: the skill refuses to do work until bindings are complete
  * and interviews the team on first run.
  *
@@ -107,14 +107,14 @@ function main() {
   if (installedFor.length === 0) {
     results.push(
       write(
-        path.join(TARGET, ".handoff", "skill", "SKILL.md"),
+        path.join(TARGET, ".orchestrated", "skill", "SKILL.md"),
         skill
       )
     );
-    installedFor.push("generic (.handoff/skill/ — point any agent's instructions at it)");
+    installedFor.push("generic (.orchestrated/skill/ -- point any agent's instructions at it)");
   }
 
-  // --- Shared scaffold: .handoff/ (protocol reference + bindings) ---
+  // --- Shared scaffold: .orchestrated/ (protocol reference + bindings) ---
 
   const scaffold = [
     ["protocol/states.md", true],
@@ -127,13 +127,13 @@ function main() {
   ];
   for (const [rel, overwrite] of scaffold) {
     results.push(
-      write(path.join(TARGET, ".handoff", rel), read(rel), { overwrite })
+      write(path.join(TARGET, ".orchestrated", rel), read(rel), { overwrite })
     );
   }
 
-  // Bindings: NEVER overwrite — it holds the team's filled-in agreement.
+  // Bindings: NEVER overwrite -- it holds the team's filled-in agreement.
   results.push(
-    write(path.join(TARGET, ".handoff", "bindings.md"), read(path.join("templates", "bindings.md")), {
+    write(path.join(TARGET, ".orchestrated", "bindings.md"), read(path.join("templates", "bindings.md")), {
       overwrite: false,
     })
   );
@@ -149,7 +149,7 @@ function main() {
     console.log(`  ${r.action.padEnd(14)} ${path.relative(TARGET, r.path)}`);
   }
   console.log(`
-Next step — run the setup interview (the judgment half):
+Next step -- run the setup interview (the judgment half):
 
   Open your agent in this project and say:
 
@@ -157,8 +157,8 @@ Next step — run the setup interview (the judgment half):
 
   The agent will interview your team (work store, notification channel,
   roles, escalation contacts), validate the store against
-  .handoff/protocol/store-contract.md, and write the completed agreement
-  to .handoff/bindings.md. The skill refuses to run work items until
+  .orchestrated/protocol/store-contract.md, and write the completed agreement
+  to .orchestrated/bindings.md. The skill refuses to run work items until
   bindings are complete.
 `);
 }

@@ -51,6 +51,18 @@ you use. It is a set of rules any agent can follow, in any stack:
    durable async state, attention dashboards) is worth adding only when the
    manual mode's specific failure shows up.
 
+## How this differs from other agent-coordination projects
+
+Most agent-coordination tools solve one of two narrower problems: coding
+agents sharing a repo without conflicts (file-based agent-to-agent handoff),
+or chat-session frameworks where a human relays messages between agent
+conversations. This protocol targets the seam they leave open: **work that
+crosses roles and access boundaries** — a PM who lives in Confluence or
+SharePoint handing approved, version-pinned work to engineers and coding
+agents who live in GitHub, with humans notified only when action is needed.
+Work lives in your real tools, survives any single session, and carries its
+approval state and audit trail with it.
+
 ## Getting started
 
 ```
@@ -63,9 +75,9 @@ installs the skill in each one's native location:
 - Claude Code → `.claude/skills/orchestrated-handoff/SKILL.md`
 - GitHub Copilot → `.github/instructions/orchestrated-handoff.instructions.md`
 - Cursor → `.cursor/rules/orchestrated-handoff.mdc`
-- No tool detected → `.handoff/skill/SKILL.md` (point any agent at it)
+- No tool detected → `.orchestrated/skill/SKILL.md` (point any agent at it)
 
-It also scaffolds `.handoff/` with the protocol reference and a bindings
+It also scaffolds `.orchestrated/` with the protocol reference and a bindings
 template. Re-running refreshes the skill but never overwrites your filled-in
 bindings.
 
@@ -73,8 +85,8 @@ Then open your agent and say **"Run the orchestrated-handoff setup
 interview."** The agent interviews your team (work store, notification
 channel, roles, escalation contacts), validates the store against the
 capability contract, and writes the completed agreement to
-`.handoff/bindings.md`. The skill refuses to run work items until bindings
-are complete.
+`.orchestrated/bindings.md`. The skill refuses to run work items until
+bindings are complete.
 
 Finally, run one real feature through it: create the work item, let the first
 agent gate-check, work, hand off, and watch the notification land.

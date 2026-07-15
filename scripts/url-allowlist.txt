@@ -1,0 +1,5 @@
+# URLs allowed in agent-loaded files (skills/, templates/, protocol/, examples/).
+# Prefix match. Anything not covered here fails CI — add the URL in the same PR
+# that introduces it, with a reason in the PR body.
+https://json-schema.org/
+https://github.com/amkentech/agent-handoff-protocol

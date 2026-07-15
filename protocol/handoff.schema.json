@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/PLACEHOLDER/agent-handoff-protocol/protocol/handoff.schema.json",
+  "title": "Handoff Package",
+  "description": "The structured package one human or agent produces when transferring responsibility for a work item to another. Free-form chat may accompany it; this package is the system of record.",
+  "type": "object",
+  "required": [
+    "workItemId",
+    "fromRole",
+    "toRole",
+    "workCompleted",
+    "artifacts",
+    "recommendedNextAction",
+    "approvalRequired"
+  ],
+  "properties": {
+    "workItemId": { "type": "string", "description": "Identifier of the work item this handoff belongs to." },
+    "fromRole": { "type": "string", "description": "Role handing off (e.g. product-manager, planning-agent, coding-agent)." },
+    "fromActor": { "type": "string", "description": "Specific human or agent (and model) that performed the work." },
+    "toRole": { "type": "string", "description": "Role receiving the work." },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "workCompleted": { "type": "string", "description": "One-paragraph summary of what was accomplished." },
+    "actionsTaken": { "type": "array", "items": { "type": "string" } },
+    "artifacts": {
+      "type": "array",
+      "description": "Everything produced, with pinned versions.",
+      "items": {
+        "type": "object",
+        "required": ["url", "type"],
+        "properties": {
+          "url": { "type": "string" },
+          "type": { "type": "string", "description": "e.g. prd, implementation-plan, pull-request, design-spec" },
+          "sourceSystem": { "type": "string", "description": "e.g. confluence, github, google-drive" },
+          "version": { "type": "string", "description": "Version reference in the source system." }
+        }
+      }
+    },
+    "sourceVersions": {
+      "type": "array",
+      "description": "The pinned versions of upstream artifacts this work was built from.",
+      "items": {
+        "type": "object",
+        "required": ["url", "version"],
+        "properties": {
+          "url": { "type": "string" },
+          "version": { "type": "string" }
+        }
+      }
+    },
+    "decisionsMade": { "type": "array", "items": { "type": "string" } },
+    "openQuestions": { "type": "array", "items": { "type": "string" } },
+    "knownRisks": { "type": "array", "items": { "type": "string" } },
+    "recommendedNextAction": { "type": "string" },
+    "approvalRequired": {
+      "type": "object",
+      "required": ["required"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "approver": { "type": "string", "description": "Who must approve before the next step proceeds." }
+      }
+    },
+    "contextLinks": { "type": "array", "items": { "type": "string" } }
+  }
+}

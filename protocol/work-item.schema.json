@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/PLACEHOLDER/agent-handoff-protocol/protocol/work-item.schema.json",
+  "title": "Work Item",
+  "description": "The primary object of the protocol. Messages, artifacts, decisions, approvals, and agent activity attach to the work item — not the other way around.",
+  "type": "object",
+  "required": ["id", "title", "status", "role"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "objective": { "type": "string", "description": "One sentence: what done looks like." },
+    "status": {
+      "type": "string",
+      "enum": ["Draft", "Ready", "Approved", "In Progress", "Waiting for Input", "Blocked", "Completed", "Cancelled"],
+      "description": "See protocol/states.md for transitions."
+    },
+    "role": { "type": "string", "description": "Role this item is assigned to (human or agent)." },
+    "assignee": { "type": "string", "description": "Specific human or registered agent." },
+    "owner": { "type": "string", "description": "Accountable human. Always a human." },
+    "priority": { "type": "string", "enum": ["low", "normal", "high", "urgent"] },
+    "due": { "type": "string", "format": "date" },
+    "dependencies": {
+      "type": "array",
+      "description": "Work items or artifacts that must be Approved before this starts.",
+      "items": { "type": "string" }
+    },
+    "requiredInputs": { "type": "array", "items": { "type": "string" } },
+    "expectedOutput": { "type": "string" },
+    "completionCriteria": { "type": "array", "items": { "type": "string" }, "description": "Explicit, checkable." },
+    "artifacts": { "type": "array", "items": { "type": "string" }, "description": "URLs of attached artifacts." },
+    "escalationContact": { "type": "string", "description": "Who the assignee asks when blocked on a decision." },
+    "parent": { "type": "string", "description": "Parent work item or feature this belongs to." }
+  }
+}

@@ -100,6 +100,12 @@ Claude Code · GitHub Copilot · Cursor · BMAD Method personas · spec kits ·
 custom and MCP-compatible agents — anything that can read instructions and
 follow them.
 
+## Contributing
+
+Extensions land fast (new store mappings, new tool install targets, worked
+examples); core protocol changes need an issue with a concrete failing case
+first. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
